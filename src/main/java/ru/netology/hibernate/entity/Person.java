@@ -1,20 +1,16 @@
 package ru.netology.hibernate.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
+import lombok.*;
 
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "PERSONS")
 @Entity
-@IdClass(Person.class)
+@IdClass(PersonId.class)
 
-public class Person implements Serializable {
+public class Person {
     @Id
     private String name;
     @Id
@@ -25,4 +21,23 @@ public class Person implements Serializable {
     private int phoneNumber;
     @Column(name="city_of_living")
     private String cityOfLiving;
+
+    public Person(String name, String surname, int age) {
+        this.name = name;
+        this.surname= surname;
+        this.age = age;
+    }
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = Integer.parseInt(phoneNumber);
+    }
+    public String getCityOfLiving() {
+        return cityOfLiving;
+    }
+    public void setCityOfLiving(String cityOfLiving) {
+        this.cityOfLiving = cityOfLiving;
+    }
+
 }
